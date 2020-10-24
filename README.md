@@ -7,6 +7,7 @@ pip install -r requirements.txt
 
 # Train the model
 Create folder in datasets with person name
+
 Edit the new person name to train in db.py
 
 python db.py
