@@ -9,7 +9,7 @@ name = ''
 
 @app.route('/')
 def index():
-    return render_template('index.html', **templateData)
+    return render_template('index.html')
 
 def gen(video):
     while True:
