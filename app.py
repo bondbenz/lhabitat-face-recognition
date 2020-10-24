@@ -5,13 +5,10 @@ import cv2,os
 
 app = Flask(__name__)
 video = cv2.VideoCapture(0)
-door_status = 'Closed'
 name = ''
 
 @app.route('/')
 def index():
-    templateData = { 'door_status' : door_status,
-                     }
     return render_template('index.html', **templateData)
 
 def gen(video):
@@ -38,7 +35,6 @@ def video_feed_stop():
 
 @app.route('/verify')
 def verify():
-    print("works")
     os.system('python recognition.py')
     #resp = jsonify(success=True)
     return 'True'
@@ -46,9 +42,7 @@ def verify():
 @app.route('/postjson', methods = ['POST'])
 def postJsonHandler():
     global name
-    print (request.is_json)
     content = request.get_json()
-    print (content)
     name = content['name']
     print('Name ->',name)
     return name
