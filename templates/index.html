@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>L'Habitat Face Recognition</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" type="image/png" href="/static/face.png" />
+  <script src="/static/jquery.js"></script>
+<script type=text/javascript>
+  $(function() {
+    $(document).on("click", 'button',function(e){
+      setTimeout(function(){document.getElementById("info").innerHTML = "Verifying ...";}, 500);
+      $('button').hide();
+      $('.loader').css("display","flex");
+      e.preventDefault()
+      $.getJSON('/verify',
+          function(data) {
+      });
+      setTimeout(function(){
+        $.ajax({
+        url: "/getname",
+        type: "get",
+        dataType: 'json',
+        success: function(response) {
+          //var response = JSON.parse(response);
+          if (response.status == 'verified') {
+            document.getElementById("opendoor").click();
+            setTimeout(function(){document.getElementById("info").innerHTML = "Welcome "+response.name+"!";}, 500);
+          }else{
+            setTimeout(function(){document.getElementById("info").innerHTML = "You are not a resident!";}, 500);
+          }
+          $('.loader').css("display","none");
+        },
+        error: function(xhr) {
+          //Do Something to handle error
+        }
+      });
+      },5000)
+      return false;
+    });
+  });
+</script>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h1>L'Habitat</h1>
+<div class="backDoor">
+    <div class="door" id="opendoor">
+  </div>
+</div>
+<p id="info">Are you a resident ?</p>
+<!-- <a href="#" id="verify" style="text-align: center;">Verify now</a> -->
+<button>
+	Verify Now &nbsp;
+<img src="/static/verify.svg" width="55px" alt="" srcset="">
+</button>
+<div class="loader">
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+</div>
+<p id="name">{{name}}</p>
+<!-- partial -->
+  <script  src="/static/script.js"></script>
+</body>
+</html>

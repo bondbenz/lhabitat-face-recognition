@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap");
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffdd59;
+  transition: all 1s ease-in-out;
+  font-family: "Rubik", sans-serif;
+}
+.backDoor
+{
+  background-color: #333;
+  position:relative;
+  width:200px;
+  height:300px;
+  margin: 0 auto;
+  margin-top:40px;
+}
+h1{
+  margin-top: 100px;
+  text-align: center;
+}
+p{
+  margin-top: 45px;
+  text-align: center;
+  font-size: 25px;
+}
+.door
+{
+  background-color: #ff3f34;
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:200px;
+  height:300px;
+ 
+  transform-origin: left;
+  /*Speed of the Door animation*/
+  transition: all 0.5s ease-in-out;
+}
+
+.doorOpen
+{
+  /*prespectiv creates the door open effect*/
+  transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
+}
+
+#verify {
+  border-style: solid;
+  text-align: center;
+  border-color: crimson;
+}
+
+.loader {
+  width: 120px;
+  margin: 10px auto;
+  display: none;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+
+  animation-name: loading;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.circle:first-child {
+  background-color: #a10702;
+  animation-delay: 0s;
+}
+
+.circle:nth-child(2) {
+  background-color: #f44708;
+  animation-delay: 0.2s;
+}
+
+.circle:nth-child(3) {
+  background-color: #faa613;
+  animation-delay: 0.4s;
+  margin-right: 0px;
+}
+
+@keyframes loading {
+  from {
+    transform: translateY(30px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+
+:root {
+  --c-text: #0b6b5e;
+  --c-border: #1CD5BD;
+  --c-bg-light: #e7fbf8;
+  --c-bg-dark: #aaf0e6;
+}
+
+
+button {
+  font: inherit;
+  margin: 0 auto;
+  color: inherit;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  line-height: 1;
+  font-size: 1.75rem;
+  border: 0.1em solid var(--c-border);
+  background-color: var(--c-bg-light);
+  padding: .5em 1em;
+  box-shadow: 0.375em 0.375em 0 0 var(--c-bg-dark);
+  font-weight: 500;
+  cursor: pointer;
+}
+button svg {
+  width: 1.25em;
+  margin-left: .375em;
+}
+button:focus {
+  outline: 0;
+}
