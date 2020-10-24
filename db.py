@@ -12,7 +12,7 @@ datasets = 'datasets'
 # These are sub data sets of folder, 
 # for my faces I've used my name you can 
 # change the label here 
-sub_data = 'Oussama'	
+sub_data = 'Islam'	
 
 path = os.path.join(datasets, sub_data) 
 
